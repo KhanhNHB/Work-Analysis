@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  mssql:
+    image: "mcr.microsoft.com/mssql/server:2017-latest"
+    container_name: mssql
+    restart: always
+    hostname: mssql
+    environment:
+      SA_PASSWORD: 123ASDqwe
+      ACCEPT_EULA: Y
+    volumes:
+      - mssql:/var/opt/mssql/data
+      - ./bk:/var/opt/mssql/backup
+    ports:
+      - "1433:1433"
+
+volumes:
+    mssql:
